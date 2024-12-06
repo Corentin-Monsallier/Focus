@@ -18,6 +18,11 @@
 body {
   background-image: url(./images/dan-otis-OYFHT4X5isg-unsplash.jpg);
   background-size: cover;
+  background-position: center;
+  color: var(--clr-text);
+}
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5));
 }
 button {
   font-size: var(--btn-font-size);
@@ -25,16 +30,17 @@ button {
   font-weight: 200;
   padding: 7px 30px;
   border-radius: 50px;
-  color: var(--clr-text);
   background-color: transparent;
+  color: var(--clr-text);
 }
+
 #btn_clock:hover,
 #btn_work:hover,
-#btn_break:hover {
+#btn_break:hover,
+#btn_settings:hover  {
   border: var(--clr-text) 2px solid;
   transition: 0.4s ease;
 }
-
 #MyClockDisplay,
 #timerWork,
 #timerBreak {
@@ -48,28 +54,27 @@ button {
   font-weight: 400;
   color: var(--clr-text);
 }
+#btn_image, #btn_sound {
+  border: var(--clr-text) 2px solid;
+}
 
 .wrapper {
   height: 100vh;
   width: 100vw;
+  justify-content: center;
+  align-items: center;
 }
 .select {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 15%;
   padding-bottom: 50px;
 }
-.work {
+.work, .break, .settings {
   text-align: center;
 }
-.controlsWork {
-  display: flex;
-  justify-content: center;
-}
-.break {
-  text-align: center;
-}
-.controlsBreak {
+.controlsWork, .controlsBreak, .gallery, .audios {
   display: flex;
   justify-content: center;
 }
@@ -85,6 +90,16 @@ button {
 .minus_work,
 .show_clock,
 .show_work,
-.show_break {
+.show_break,
+.show_settings {
   padding: 10px;
+}
+.gallery img {
+  border: 2px solid var(--clr-text);
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+.gallery img:hover {
+  transform: scale(1.1);
+  border-color: #ccc;
 }

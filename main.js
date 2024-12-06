@@ -2,6 +2,7 @@
 const clockTime = document.querySelector(".clock_container");
 const workTime = document.querySelector(".work");
 const breakTime = document.querySelector(".break");
+const settings = document.querySelector(".settings");
 const bells = new Audio("./audio/alarm.wav");
 
 /*------------------------------------------------------------ MAIN BUTTONS ------------------------------------------------------------*/
@@ -9,36 +10,66 @@ function showClock() {
   clockTime.style.display = "block";
   workTime.style.display = "none";
   breakTime.style.display = "none";
-  document.getElementById("btn_clock").style.backgroundColor =
-    "var(--clr-text)";
+  settings.style.display = "none";
+
+  gallery.style.display = "none";
+
+  document.getElementById("btn_clock").style.backgroundColor = "var(--clr-text)";
   document.getElementById("btn_clock").style.color = "black";
   document.getElementById("btn_work").style.backgroundColor = "transparent";
   document.getElementById("btn_work").style.color = "var(--clr-text)";
   document.getElementById("btn_break").style.backgroundColor = "transparent";
   document.getElementById("btn_break").style.color = "var(--clr-text)";
+  document.getElementById("btn_settings").style.backgroundColor = "transparent";
+  document.getElementById("btn_settings").style.color = "var(--clr-text)";
 }
 function showWork() {
   clockTime.style.display = "none";
   workTime.style.display = "block";
   breakTime.style.display = "none";
+  settings.style.display = "none";
+
+  gallery.style.display = "none";
+
   document.getElementById("btn_clock").style.backgroundColor = "transparent";
   document.getElementById("btn_clock").style.color = "var(--clr-text)";
   document.getElementById("btn_work").style.backgroundColor = "var(--clr-text)";
   document.getElementById("btn_work").style.color = "black";
   document.getElementById("btn_break").style.backgroundColor = "transparent";
   document.getElementById("btn_break").style.color = "var(--clr-text)";
+  document.getElementById("btn_settings").style.backgroundColor = "transparent";
+  document.getElementById("btn_settings").style.color = "var(--clr-text)";
 }
 function showBreak() {
   clockTime.style.display = "none";
   workTime.style.display = "none";
   breakTime.style.display = "block";
+  settings.style.display = "none";
+
+  gallery.style.display = "none";
+
   document.getElementById("btn_clock").style.backgroundColor = "transparent";
   document.getElementById("btn_clock").style.color = "var(--clr-text)";
   document.getElementById("btn_work").style.backgroundColor = "transparent";
   document.getElementById("btn_work").style.color = "var(--clr-text)";
-  document.getElementById("btn_break").style.backgroundColor =
-    "var(--clr-text)";
+  document.getElementById("btn_break").style.backgroundColor = "var(--clr-text)";
   document.getElementById("btn_break").style.color = "black";
+  document.getElementById("btn_settings").style.backgroundColor = "transparent";
+  document.getElementById("btn_settings").style.color = "var(--clr-text)";
+}
+function showSettings() {
+  clockTime.style.display = "none";
+  workTime.style.display = "none";
+  breakTime.style.display = "none";
+  settings.style.display = "block";
+  document.getElementById("btn_clock").style.backgroundColor = "transparent";
+  document.getElementById("btn_clock").style.color = "var(--clr-text)";
+  document.getElementById("btn_work").style.backgroundColor = "transparent";
+  document.getElementById("btn_work").style.color = "var(--clr-text)";
+  document.getElementById("btn_break").style.backgroundColor = "transparent";
+  document.getElementById("btn_break").style.color = "var(--clr-text)";
+  document.getElementById("btn_settings").style.backgroundColor = "var(--clr-text)";
+  document.getElementById("btn_settings").style.color = "black";
 }
 
 /*------------------------------------------------------------ CLOCK ------------------------------------------------------------*/
@@ -298,6 +329,66 @@ function showTimerBreak() {
   document.getElementById("timerBreak").innerHTML = timeBreak;
   document.getElementById("timerBreak").textContent = timeBreak;
 }
+
+/*------------------------------------------------------------ SETTINGS ------------------------------------------------------------*/
+function changeBackground() {
+  if (gallery.style.display === "none") {
+    gallery.style.display = "block";
+    fetch('/list-images')
+    .then(response => response.json())
+    .then(images => {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      images.forEach(image => {
+        const img = document.createElement('img');
+        img.src = `/images/${image}`;
+        img.style.width = '192px';
+        img.style.height = '108px';
+        img.style.margin = '5px';
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+          document.body.style.backgroundImage = `url('/images/${image}')`;
+        });
+        gallery.appendChild(img);
+      });
+    })
+  }
+  else {
+    gallery.style.display = "none";
+  }
+}
+
+function fetchAudio() {
+  const audioContainer = document.getElementById('audio-gallery');
+
+  // Toggle visibility of the audio gallery
+  if (audioContainer.style.display === 'none' || audioContainer.style.display === '') {
+    audioContainer.style.display = 'block';
+    fetch('/list-audio')
+      .then(response => response.json())
+      .then(audioFiles => {
+        audioContainer.innerHTML = '';
+        audioFiles.forEach(audioFile => {
+          const audioDiv = document.createElement('div');
+          audioDiv.style.margin = '10px';
+          const audioElement = document.createElement('audio');
+          audioElement.controls = true;
+          audioElement.src = `/audio/${audioFile}`;
+          audioElement.alt = audioFile;
+          audioDiv.addEventListener('click', () => {
+            const bells = new Audio(`/audio/${audioFile}`);
+          })
+          audioDiv.appendChild(audioElement);
+          audioContainer.appendChild(audioDiv);
+        });
+      })
+  } else {
+    // Hide the audio gallery
+    audioContainer.style.display = 'none';
+  }
+}
+
+
 
 /*------------------------------------------------------------ FUNCTION CALL ------------------------------------------------------------*/
 showDate();

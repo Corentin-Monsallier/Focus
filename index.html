@@ -18,11 +18,18 @@
           </button>
         </div>
         <div class="show_work">
-          <button onclick="showWork()" type="button" id="btn_work">WORK</button>
+          <button onclick="showWork()" type="button" id="btn_work">
+            WORK
+          </button>
         </div>
         <div class="show_break">
           <button onclick="showBreak()" type="button" id="btn_break">
             BREAK
+          </button>
+        </div>
+        <div class="show_settings">
+          <button onclick="showSettings()" type="button" id="btn_settings">
+            SETTINGS
           </button>
         </div>
       </div>
@@ -74,6 +81,16 @@
               <button id="minusBreak"><i class="fa-solid fa-minus"></i></button>
             </div>
           </div>
+        </div>
+        <div class="settings">
+          <button onclick="changeBackground()" type="button" id="btn_settings">
+            CHANGE BACKGROUND IMAGE
+          </button>
+          <div class="gallery" id="gallery"></div>
+          <button onclick="fetchAudio()" type="button" id="btn_audio">
+            CHANGE AUDIO
+          </button>
+          <div class="audio-gallery" id="audio-gallery" style="display: none;"></div>
         </div>
       </div>
     </div>
