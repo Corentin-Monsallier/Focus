@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/83d3647690.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Focus</title>
+  </head>
+  <body onload="showClock()">
+    <div class="wrapper">
+      <div class="select">
+        <div class="show_clock">
+          <button onclick="showClock()" type="button" id="btn_clock">
+            CLOCK
+          </button>
+        </div>
+        <div class="show_work">
+          <button onclick="showWork()" type="button" id="btn_work">WORK</button>
+        </div>
+        <div class="show_break">
+          <button onclick="showBreak()" type="button" id="btn_break">
+            BREAK
+          </button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="clock_container">
+          <div id="MyClockDisplay"></div>
+          <div id="MyDateDisplay"></div>
+        </div>
+        <div class="work">
+          <div id="timerWork"></div>
+          <div class="controlsWork">
+            <div class="plus_work">
+              <button id="plusWork"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="start_work">
+              <button id="startWork"><i class="fa-solid fa-play"></i></button>
+            </div>
+            <div class="pause_work">
+              <button id="pauseWork"><i class="fa-solid fa-pause"></i></button>
+            </div>
+            <div class="reset_work">
+              <button id="resetWork">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+            </div>
+            <div class="minus_work">
+              <button id="minusWork"><i class="fa-solid fa-minus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="break">
+          <div id="timerBreak"></div>
+          <div class="controlsBreak">
+            <div class="plus_break">
+              <button id="plusBreak"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="start_break">
+              <button id="startBreak"><i class="fa-solid fa-play"></i></button>
+            </div>
+            <div class="pause_break">
+              <button id="pauseBreak"><i class="fa-solid fa-pause"></i></button>
+            </div>
+            <div class="reset_break">
+              <button id="resetBreak">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+            </div>
+            <div class="minus_break">
+              <button id="minusBreak"><i class="fa-solid fa-minus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
